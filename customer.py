@@ -19,3 +19,21 @@ class customer:
     def create_order(self, coffee, price):
         return Order(self, coffee, price)
     
+    @classmethod
+    def most_aficionado(cls, coffee):
+        if not isinstance(coffee, Coffee):
+            raise TypeError("Must be a Coffee instance")
+            
+        customers_spending = {}
+        for order in Order.all:
+            if order.coffee == coffee:
+                if order.customer in customers_spending:
+                    customers_spending[order.customer] += order.price
+                else:
+                    customers_spending[order.customer] = order.price
+
+        if not customers_spending:
+            return None
+            
+        return max(customers_spending.items(), key=lambda item: item[1])[0]
+    

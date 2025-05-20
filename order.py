@@ -22,4 +22,18 @@ class Order:
     @property
     def customer(self):
         return self._customer
+    @customer.setter
+    def customer(self, customer):
+        if not isinstance(customer, Customer):
+            raise TypeError("Must be a Customer instance")
+        self._customer = customer
+        
+    @property
+    def coffee(self):
+        return self._coffee
+    @coffee.setter
+    def coffee(self, coffee):
+        if not isinstance(coffee, Coffee):
+            raise TypeError("Must be a Coffee instance")
+        self._coffee = coffee
     
