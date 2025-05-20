@@ -1,4 +1,4 @@
-from order import Order
+
 
 class Coffee:
     all = []
@@ -21,12 +21,14 @@ class Coffee:
         self._name = name
 
     def orders(self):
+        from order import Order 
         return [order for order in Order.all if order.coffee == self]
         
     def customers(self):
         return list({order.customer for order in self.orders()})
         
     def num_orders(self):
+        from order import Order 
         return len(self.orders())
     def average_price(self):
         if not self.orders():
