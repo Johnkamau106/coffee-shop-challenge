@@ -1,8 +1,13 @@
 from order import Order
+from coffee import Coffee
 
 class Customer:
     def __init__(self, name):
        self.name = name
+
+    @property
+    def name(self):
+        return self._name
 
     @name.setter
     def name(self, name):
@@ -29,13 +34,7 @@ class Customer:
         customers_spending = {}
         for order in Order.all:
             if order.coffee == coffee:
-                if order.customer in customers_spending:
-                    customers_spending[order.customer] += order.price
-                else:
-                    customers_spending[order.customer] = order.price
-
-        if not customers_spending:
-            return None
-            
+                customers_spending[order.customer] = customers_spending.get(order.customer, 0) + order.price
+                
         return max(customers_spending.items(), key=lambda item: item[1])[0]
     

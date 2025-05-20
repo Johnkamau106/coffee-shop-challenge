@@ -15,7 +15,7 @@ if __name__ == "__main__":
     order3 = Order(customer2, coffee1, 4.0)
     
     print(f"{customer1.name}'s orders: {[order.price for order in customer1.orders()]}")
-    print(f"{customer1.name}'s coffees: {[cof.name for coffee in customer1.coffees()]}")
+    print(f"{customer1.name}'s coffees: {[coffee.name for coffee in customer1.coffees()]}")
     print(f"{coffee1.name}'s orders: {coffee1.num_orders()}")
     print(f"{coffee1.name}'s average price: {coffee1.average_price()}")
     print(f"Most aficionado for {coffee1.name}: {Customer.most_aficionado(coffee1).name}")
