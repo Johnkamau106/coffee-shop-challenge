@@ -1,4 +1,6 @@
 from coffee import Coffee
+from customer import Customer
+
 
 class Order:
     all = []
